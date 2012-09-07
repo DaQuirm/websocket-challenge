@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WebSockets</title>
+		<script>
+			window.addEventListener("load", function() {
+				var token = token;
+				var task1solved = false;
+
+				var task2 = {};
+
+				var socket = new WebSocket("ws://localhost:8080");
+				socket.binaryType = "arraybuffer";
+				socket.onopen = function() {
+					socket.send(JSON.stringify({ msg: "challenge_accepted", team: "DaQuirm" }));
+				};
+
+				socket.onmessage = function(evt) {
+					if (typeof evt.data == "string") {
+						var msg = JSON.parse(evt.data);
+						switch (msg.msg) {
+							case "auth":
+								token = msg.token;
+								socket.send(JSON.stringify({ msg: "task1", token: token }));
+								break;
+							case "compute":
+							    var result;
+							    switch (msg.operator) {
+							        case '+':
+							            result = msg.operands[0] + msg.operands[1];
+							            break;
+							        case '-':
+							            result = msg.operands[0] - msg.operands[1];
+							            break;
+							        case '*':
+							            result = msg.operands[0] * msg.operands[1];
+							            break;
+							    }
+								socket.send(JSON.stringify({ msg: "compute_result", token: token, result: result }));
+								break;
+							case "win":
+								if (!task1solved) {
+									task1solved = true;
+									socket.send(JSON.stringify({ msg: "next", token: token }));
+								}
+								break;
+
+							case "sum":
+								task2 = msg;
+								break;
+						}
+					} else {
+					    var result;
+					    var arrs = {
+					        8: Uint8Array,
+					        16: Uint16Array,
+					    }
+					    var arr = new arrs[task2.bits](evt.data);
+					    var sum = 0;
+					    for (var i = 0; i < arr.length; i++) {
+					        sum += arr[i];
+					    }
+					    result = sum;
+					    socket.send(JSON.stringify({ msg: "binary_sum", token: token, result: result }));
+					}
+				}
+			});
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
