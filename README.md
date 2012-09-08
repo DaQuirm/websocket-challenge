@@ -17,7 +17,7 @@ Think of a cool team name, establish a WebSocket connection and send a `challeng
 ````javascript
 { "msg": "challenge_accepted", "team": "Socket Masters" }
 ````
-The server will respons with
+The server will respond with
 ````javascript
 { "msg":"auth", "token":"67a32de32" }
 ````
@@ -58,4 +58,4 @@ where bits is either 8 or 16. Immediately after that you should receive a binary
 ````
 After that you should receive a confirmation message (or an error message, which shouldn't make you sad, because you have unlimited attempts) which will end the challenge for you and, should you be the first to solve the tasks, declare you the winner (a message will appear in server console)!
 
-That's all for now, there's plenty room for improvement and extensions though, so your PRs are very welcome :wink:
+That's all for now, there's plenty of room for improvement and extensions though, so your PRs are very welcome :wink:
