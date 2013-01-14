@@ -5,14 +5,13 @@
 		<script>
 			window.addEventListener("load", function() {
 				var token = token;
-				var task1solved = false;
 
 				var task2 = {};
 
 				var socket = new WebSocket("ws://localhost:8080");
 				socket.binaryType = "arraybuffer";
 				socket.onopen = function() {
-					socket.send(JSON.stringify({ msg: "challenge_accepted", team: "DaQuirm" }));
+					socket.send(JSON.stringify({ msg: "challenge_accepted", name: "DaQuirm" }));
 				};
 
 				socket.onmessage = function(evt) {
@@ -20,10 +19,10 @@
 						var msg = JSON.parse(evt.data);
 						switch (msg.msg) {
 							case "auth":
-								token = msg.token;
-								socket.send(JSON.stringify({ msg: "task1", token: token }));
+								token = msg.auth_token;
+								socket.send(JSON.stringify({ msg: "task_one", auth_token: token }));
 								break;
-							case "compute":
+							 case "compute":
 							    var result;
 							    switch (msg.operator) {
 							        case '+':
@@ -36,16 +35,13 @@
 							            result = msg.operands[0] * msg.operands[1];
 							            break;
 							    }
-								socket.send(JSON.stringify({ msg: "compute_result", token: token, result: result }));
-								break;
+								socket.send(JSON.stringify({ msg: "task_one_result", auth_token: token, result: result }));
+							 	break;
 							case "win":
-								if (!task1solved) {
-									task1solved = true;
-									socket.send(JSON.stringify({ msg: "next", token: token }));
-								}
+								socket.send(JSON.stringify({ msg: "next", auth_token: token }));
 								break;
 
-							case "sum":
+							case "binary_sum":
 								task2 = msg;
 								break;
 						}
@@ -61,7 +57,7 @@
 					        sum += arr[i];
 					    }
 					    result = sum;
-					    socket.send(JSON.stringify({ msg: "binary_sum", token: token, result: result }));
+					    socket.send(JSON.stringify({ msg: "task_two_result", auth_token: token, result: result }));
 					}
 				}
 			});
