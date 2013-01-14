@@ -1,8 +1,8 @@
 class BinaryTask
   constructor: ->
-    @buffer = new ArrayBuffer(16);
-    bitsValues = [8, 16];
-    @bits = bitsValues[Math.round(Math.random()*1000) % 2];
+    @buffer = new ArrayBuffer 16
+    bitsValues = [8, 16]
+    @bits = bitsValues[Math.round(Math.random()*1000) % 2]
     @arrays =
       8: Uint8Array
       16: Uint16Array

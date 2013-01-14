@@ -11,7 +11,6 @@ class Challenge
   constructor: ->
     # participants by their auth_token
     @participants = {}
-    @winner = null
 
   add_participant: (participant)->
     @participants[participant.auth_token] = participant

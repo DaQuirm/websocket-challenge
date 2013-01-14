@@ -1,8 +1,8 @@
 class ArithmeticTask
   constructor: ->
-    operators = ['+','-','*'];
+    operators = ['+','-','*']
 
-    @operands = [Math.round(Math.random()*9), Math.round(Math.random()*9)];
+    @operands = [Math.round(Math.random()*9), Math.round(Math.random()*9)]
     @operator = operators[Math.round(Math.random()*1000) % 3]
 
   check: (result)->
