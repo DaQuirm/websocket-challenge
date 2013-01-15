@@ -2,8 +2,8 @@ class ArithmeticTask
   constructor: ->
     operators = ['+','-','*']
 
-    @operands = [Math.round(Math.random()*9), Math.round(Math.random()*9)]
-    @operator = operators[Math.round(Math.random()*1000) % 3]
+    @operands = [Math.round Math.random()*9, Math.round Math.random()*9]
+    @operator = operators[Math.round Math.random()*operators.length]
 
   check: (result)->
     [a,b] = @operands

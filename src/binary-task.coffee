@@ -2,14 +2,14 @@ class BinaryTask
   constructor: ->
     @buffer = new ArrayBuffer 16
     bitsValues = [8, 16]
-    @bits = bitsValues[Math.round(Math.random()*1000) % 2]
+    @bits = bitsValues[Math.floor Math.random()*bitsValues.length]
     @arrays =
       8: Uint8Array
       16: Uint16Array
 
     arr = new @arrays[@bits] @buffer
-    for i in [0...16 / (@bits / 8)]
-      arr[i] = Math.round Math.random()*Math.pow(2,@bits)
+    for i in [0... @buffer.length / (@bits / 8)]
+      arr[i] = Math.round Math.random()*Math.pow(2, @bits)
 
   check: (result)->
     arr = new @arrays[@bits] @buffer
