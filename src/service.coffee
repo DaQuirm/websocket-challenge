@@ -1,4 +1,4 @@
 Challenge = require './challenge.js'
 
-challenge = new Challenge
+challenge = new Challenge()
 do challenge.start

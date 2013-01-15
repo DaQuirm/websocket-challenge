@@ -55,10 +55,8 @@ class Challenge
     @log = bunyan.createLogger
       name:'challenge'
       streams: [
-        {
           level: 'info'
           path: 'challenge.json'
-        }
       ]
 
     @websocket_server.on 'request', (request)=>
