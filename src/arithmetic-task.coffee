@@ -3,7 +3,7 @@ class ArithmeticTask
     operators = ['+','-','*']
 
     @operands = [Math.round(Math.random()*9), Math.round(Math.random()*9)]
-    @operator = operators[Math.round Math.random()*operators.length]
+    @operator = operators[Math.floor Math.random()*operators.length]
 
   check: (result) ->
     [a,b] = @operands
