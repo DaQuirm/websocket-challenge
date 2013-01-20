@@ -2,7 +2,7 @@ class ArithmeticTask
   constructor: ->
     operators = ['+','-','*']
 
-    @operands = [Math.round Math.random()*9, Math.round Math.random()*9]
+    @operands = [Math.round(Math.random()*9), Math.round(Math.random()*9)]
     @operator = operators[Math.round Math.random()*operators.length]
 
   check: (result)->
