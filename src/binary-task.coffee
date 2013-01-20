@@ -9,7 +9,7 @@ class BinaryTask
 
     arr = new @arrays[@bits] @buffer
     for i in [0... @buffer.length / (@bits / 8)]
-      arr[i] = Math.round Math.random()*Math.pow(2, @bits)
+      arr[i] = Math.floor Math.random()*Math.pow(2, @bits)
 
   check: (result) ->
     arr = new @arrays[@bits] @buffer
