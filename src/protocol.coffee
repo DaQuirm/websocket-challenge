@@ -1,9 +1,9 @@
 class Protocol
-  constructor: (@actions)->
+  constructor: (@actions) ->
     @secure_messages = {}
     @result_messages = {}
 
-  process: (message)->
+  process: (message) ->
     try
       @json = JSON.parse message.utf8Data
     catch ex
@@ -20,7 +20,7 @@ class Protocol
     if @json.msg of @actions
       @actions[@json.msg] @json
 
-  create_error_msg: (error_text)->
+  create_error_msg: (error_text) ->
     JSON.stringify
       msg: 'error'
       text: error_text

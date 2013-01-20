@@ -11,7 +11,7 @@ class BinaryTask
     for i in [0... @buffer.length / (@bits / 8)]
       arr[i] = Math.round Math.random()*Math.pow(2, @bits)
 
-  check: (result)->
+  check: (result) ->
     arr = new @arrays[@bits] @buffer
     sum = 0
     for i in [0...arr.length]

@@ -12,24 +12,24 @@ class Challenge
     # participants by their auth_token
     @participants = {}
 
-  add_participant: (participant)->
+  add_participant: (participant) ->
     @participants[participant.auth_token] = participant
 
-  get_participant: (auth_token)->
+  get_participant: (auth_token) ->
     if auth_token of @participants
       @participants[auth_token]
     else
       throw new Error 'Token is invalid'
 
-  respond: (connection, response_data)->
-    toBuffer = (ab)->
+  respond: (connection, response_data) ->
+    toBuffer = (ab) ->
       buffer = new Buffer ab.byteLength
       view = new Uint8Array ab
       for i in [0...buffer.length]
         buffer[i] = view[i]
       buffer
 
-    process = (data)->
+    process = (data) ->
       if data instanceof ArrayBuffer
         connection.sendBytes toBuffer(data)
       else
@@ -41,7 +41,7 @@ class Challenge
       process response_data
 
   start: ->
-    @http_server = http.createServer (request, response)->
+    @http_server = http.createServer (request, response) ->
       console.log "#{new Date()} Received request for #{request.url}"
       response.writeHead 404
       do response.end
@@ -59,21 +59,21 @@ class Challenge
           path: 'challenge.json'
       ]
 
-    @websocket_server.on 'request', (request)=>
+    @websocket_server.on 'request', (request) =>
       connection = request.accept '', request.origin
 
       @protocol = new Protocol
-        'challenge_accepted': (message)=>
+        'challenge_accepted': (message) =>
           participant = new Participant message.name, connection
           @add_participant participant
           do participant.get_token_message
 
-        'task_one': (message)=>
+        'task_one': (message) =>
           participant = @get_participant message.auth_token
           task = participant.assign_task 'task_one', new ArithmeticTask()
           do task.messagify
 
-        'task_one_result': (message)=>
+        'task_one_result': (message) =>
           participant = @get_participant message.auth_token
           if participant.check_task('task_one', message.result)
             msg: 'win'
@@ -81,12 +81,12 @@ class Challenge
           else
             throw new Error 'Wrong result :('
 
-        'next': (message)=>
+        'next': (message) =>
           participant = @get_participant message.auth_token
           task = participant.assign_task 'task_two', new BinaryTask()
           do task.messagify
 
-        'task_two_result': (message)=>
+        'task_two_result': (message) =>
           participant = @get_participant message.auth_token
           if participant.check_task('task_two', message.result)
             msg: 'epic_win'
@@ -107,7 +107,7 @@ class Challenge
         'task_one_result': true
         'task_two_result': true
 
-      connection.on 'message', (message)=>
+      connection.on 'message', (message) =>
         try
           response_data = @protocol.process message
           @respond connection, response_data if response_data

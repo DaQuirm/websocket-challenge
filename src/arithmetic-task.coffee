@@ -5,7 +5,7 @@ class ArithmeticTask
     @operands = [Math.round(Math.random()*9), Math.round(Math.random()*9)]
     @operator = operators[Math.round Math.random()*operators.length]
 
-  check: (result)->
+  check: (result) ->
     [a,b] = @operands
     result is switch @operator
       when '+' then a + b
