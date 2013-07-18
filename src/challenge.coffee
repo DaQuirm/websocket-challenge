@@ -2,10 +2,10 @@ http = require 'http'
 bunyan = require 'bunyan'
 WebSocketServer = require('websocket').server
 
-Protocol = require './protocol.js'
-Participant = require './participant.js'
-ArithmeticTask = require './arithmetic-task.js'
-BinaryTask = require './binary-task.js'
+Protocol = require './protocol.coffee'
+Participant = require './participant.coffee'
+ArithmeticTask = require './arithmetic-task.coffee'
+BinaryTask = require './binary-task.coffee'
 
 class Challenge
   constructor: ->
