@@ -7,7 +7,7 @@ uses [WebSocket-Node](https://github.com/Worlize/WebSocket-Node) WebSocket serve
 1. Clone this repo
 2. Install dependencies with ```npm install```.
 3. Install CoffeeScript if you don't have it: ```npm install -g coffee-script```
-4. Run server: ``` node .\src\service.coffee```.
+4. Run server: ``` coffee .\src\service.coffee```.
 
 ## Solving the challenge
 
@@ -65,3 +65,7 @@ where bits is either 8 or 16. Immediately after that you should receive a binary
 After that you should receive a confirmation message (or an error message, which shouldn't make you sad, because you have unlimited attempts) which will end the challenge for you and, should you be the first to solve the tasks, declare you the winner (a message will appear in server console)!
 
 That's all for now, there's plenty of room for improvement and extensions though, so your PRs are very welcome :wink:
+
+## Contributors
+
+[Dzmitry Varabei](http://github.com/dzmitry-varabei)
