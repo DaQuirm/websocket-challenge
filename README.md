@@ -3,12 +3,11 @@
 A simple WebSocket competition script for Node.js that
 uses [WebSocket-Node](https://github.com/Worlize/WebSocket-Node) WebSocket server. The challenge is a little contest designed for after-training practice sessions so people can have fun with WebSockets applying their recently acquired knowledge.
 
-## Compiling and running
+## Installing and running
 1. Clone this repo
 2. Install dependencies with ```npm install```.
 3. Install CoffeeScript if you don't have it: ```npm install -g coffee-script```
-4. Compile source with ```coffee -bc src```
-4. Run server: ``` node .\src\service```.
+4. Run server: ``` node .\src\service.coffee```.
 
 ## Solving the challenge
 
