@@ -8,7 +8,7 @@ class BinaryTask
       16: Uint16Array
 
     arr = new @arrays[@bits] @buffer
-    for i in [0... @buffer.length / (@bits / 8)]
+    for i in [0... @buffer.byteLength / (@bits / 8)]
       arr[i] = Math.floor Math.random()*Math.pow(2, @bits)
 
   check: (result) ->
