@@ -66,6 +66,7 @@ After that you should receive a confirmation message (or an error message, which
 
 That's all for now, there's plenty of room for improvement and extensions though, so your PRs are very welcome :wink:
 
-## Contributors
+## Contributors (in order of appearance)
 
+[Vasiliy Ermolovich](http://github.com/nashby)  
 [Dzmitry Varabei](http://github.com/dzmitry-varabei)
