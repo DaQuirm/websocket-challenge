@@ -4,10 +4,10 @@ Chai.should()
 BinaryTask = require '../src/binary-task.coffee'
 
 describe 'Binary Task', ->
-    @binary_task = null
-    beforeEach =>
+	@binary_task = null
+	beforeEach =>
 		@binary_task = new BinaryTask
-
+	
 	describe 'bit property', =>
 		it 'exist', =>
 			@binary_task.should.have.ownProperty 'bits'
@@ -38,7 +38,7 @@ describe 'Binary Task', ->
 				sum += arr[i]
 			
 			@binary_task.check(sum).should.be.ok
-
+	
 	describe 'messagify function', =>
 		it 'exist', =>
 			@binary_task.messagify.should.be.a 'function'
@@ -54,14 +54,14 @@ describe 'Binary Task', ->
 		
 		it 'returns array with two elements where first element is an object with msg and bit keys', =>
 			@binary_task.messagify()[0].should.have.keys 'msg', 'bits'
-
+		
 		it 'returns array with two elements where first element is an object with msg and bit keys, where msg key is equal to \'binary_sum\'', =>
 			@binary_task.messagify()[0].msg.should.equal 'binary_sum'
-
+		
 		it 'returns array with two elements where first element is an object with msg and bit keys, where msg key is equal to \'binary_sum\'', =>
 			bits = @binary_task.bits
 			@binary_task.messagify()[0].bits.should.equal bits
-
+		
 		it 'returns array where second element is ArrayBuffer object equal @buffer', =>
 			buffer = @binary_task.buffer
 			@binary_task.messagify()[1].should.equal buffer
