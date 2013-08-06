@@ -8,11 +8,11 @@ describe 'Arithmetic Task', ->
 	beforeEach ->
 		arithmetic_task = new ArithmeticTask
 	
-	describe 'operands property', ->
-		it 'exist', ->
+	describe 'operands', ->
+		it 'exists', ->
 			arithmetic_task.should.have.ownProperty 'operands'
 		
-		it 'is array', ->
+		it 'is an array', ->
 			arithmetic_task.operands.should.to.be.an 'array'
 		
 		it 'has two operands', ->
@@ -23,8 +23,8 @@ describe 'Arithmetic Task', ->
 			arithmetic_task.operands[0].should.be.within 0, 9
 			arithmetic_task.operands[1].should.be.within 0, 9
 	
-	describe 'operator property', ->
-		it 'exist', ->
+	describe 'operator', ->
+		it 'exists', ->
 			arithmetic_task.should.have.ownProperty 'operator'
 		
 		it 'is a string', ->
@@ -33,11 +33,11 @@ describe 'Arithmetic Task', ->
 		it 'has one operator from [+|-|*]', ->
 			['+','-','*'].should.contain arithmetic_task.operator
 	
-	describe 'check function', ->
-		it 'exist', ->
+	describe 'check', ->
+		it 'exists', ->
 			arithmetic_task.check.should.be.a 'function'
 		
-		it 'returns boolean', ->
+		it 'returns a boolean', ->
 			arithmetic_task.check().should.be.not.ok
 		
 		it 'checks result of calculation', ->
@@ -51,24 +51,24 @@ describe 'Arithmetic Task', ->
 			
 			arithmetic_task.check(calculation).should.be.ok
 	
-	describe 'messagify function', ->
-		it 'exist', ->
+	describe 'messagify', ->
+		it 'exists', ->
 			arithmetic_task.messagify.should.be.a 'function'
 		
-		it 'returns object', ->
+		it 'returns an object', ->
 			arithmetic_task.messagify().should.be.an 'object'
 		
-		it 'returns object with msg, operands and operator keys', ->
+		it 'returns an object with msg, operands and operator keys', ->
 			arithmetic_task.messagify().should.have.keys 'msg', 'operands', 'operator'
 		
-		it 'returns object with \'msg\' key with \'compute\' string', ->
+		it 'returns an object with \'msg\' key with \'compute\' string', ->
 			arithmetic_task.messagify().msg.should.be.equal 'compute'
 		
-		it 'returns object with \'operator\' key with operator', ->
+		it 'returns an object with \'operator\' key with operator', ->
 			operator = arithmetic_task.operator
 			arithmetic_task.messagify().operator.should.be.equal operator
 		
-		it 'returns object with \'operands\' key with operands', ->
+		it 'returns an object with \'operands\' key with operands', ->
 			operands = arithmetic_task.operands
 			arithmetic_task.messagify().operands.should.be.equal operands
 			
