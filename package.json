@@ -1,8 +1,45 @@
 {
   "name": "websocket-challenge",
-  "version": "1.1.0",
+  "version": "1.2.0",
+  "description": "A simple WebSocket competition script for Node.js that uses WebSocket-Node WebSocket server. The challenge is a little contest designed for after-training practice sessions so people can have fun with WebSockets applying their recently acquired knowledge.",
+  "main": "./src/service.coffee",
+  "scripts": {
+    "start": "coffee ./src/service.coffee",
+    "test": "mocha --compilers coffee:coffee-script -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DaQuirm/websocket-challenge.git"
+  },
+  "contributors": [ 
+    {
+      "name": "Vasiliy Ermolovich",
+      "email": "younash@gmail.com"
+    },
+    {
+      "name": "Dzmitry Varabei"
+    }  
+  ],
+  "keywords": [
+    "challenge",
+    "websocket",
+    "binary"
+  ],
+  "author": "DaQuirm",
+  "bugs": {
+    "url": "https://github.com/DaQuirm/websocket-challenge/issues"
+  },
   "dependencies" : {
     "websocket": ">=1.0.8",
-    "bunyan":">=0.17.0"
+    "bunyan":">=0.17.0",
+    "coffee-script": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "chai": "*"
+  },
+  "engines": {
+    "node": ">=0.6"
   }
 }
