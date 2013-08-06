@@ -68,6 +68,6 @@ That's all for now, there's plenty of room for improvement and extensions though
 
 ## Contributors (in order of appearance)
 
-[Vasiliy Ermolovich](http://github.com/nashby)
-[Dzmitry Varabei](http://github.com/dzmitry-varabei)
+[Vasiliy Ermolovich](http://github.com/nashby)  
+[Dzmitry Varabei](http://github.com/dzmitry-varabei)  
 [Pavel Nosovich](http://github.com/forcewake)
