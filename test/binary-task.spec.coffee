@@ -25,7 +25,7 @@ describe 'BinaryTask', ->
 			binary_task.check.should.be.a 'function'
 
 		it 'returns a boolean', ->
-			binary_task.check().should.be.not.ok
+			binary_task.check().should.not.be.ok
 
 		it 'checks sum for elements in buffer', ->
 			bits = binary_task.bits

@@ -38,7 +38,7 @@ describe 'ArithmeticTask', ->
 			arithmetic_task.check.should.be.a 'function'
 
 		it 'returns a boolean', ->
-			arithmetic_task.check().should.be.not.ok
+			arithmetic_task.check().should.not.be.ok
 
 		it 'checks result of calculation', ->
 			[a, b] = arithmetic_task.operands
@@ -62,13 +62,13 @@ describe 'ArithmeticTask', ->
 			arithmetic_task.messagify().should.have.keys 'msg', 'operands', 'operator'
 
 		it 'returns an object with \'msg\' key with \'compute\' string', ->
-			arithmetic_task.messagify().msg.should.be.equal 'compute'
+			arithmetic_task.messagify().msg.should.equal 'compute'
 
 		it 'returns an object with \'operator\' key with operator', ->
 			operator = arithmetic_task.operator
-			arithmetic_task.messagify().operator.should.be.equal operator
+			arithmetic_task.messagify().operator.should.equal operator
 
 		it 'returns an object with \'operands\' key with operands', ->
 			operands = arithmetic_task.operands
-			arithmetic_task.messagify().operands.should.be.equal operands
+			arithmetic_task.messagify().operands.should.equal operands
 
