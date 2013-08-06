@@ -7,7 +7,7 @@ uses [WebSocket-Node](https://github.com/Worlize/WebSocket-Node) WebSocket serve
 1. Clone this repo
 2. Install dependencies with ```npm install```.
 3. Install CoffeeScript if you don't have it: ```npm install -g coffee-script```
-4. Run server: ``` coffee .\src\service.coffee```.
+4. Run server: ```npm start```.
 
 ## Solving the challenge
 
