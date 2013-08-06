@@ -3,7 +3,7 @@ Chai.should()
 
 ArithmeticTask = require '../src/arithmetic-task.coffee'
 
-describe 'Arithmetic Task', ->
+describe 'ArithmeticTask', ->
 	arithmetic_task = null
 	beforeEach ->
 		arithmetic_task = new ArithmeticTask

@@ -3,7 +3,7 @@ Chai.should()
 
 BinaryTask = require '../src/binary-task.coffee'
 
-describe 'Binary Task', ->
+describe 'BinaryTask', ->
 	binary_task = null
 	beforeEach ->
 		binary_task = new BinaryTask
