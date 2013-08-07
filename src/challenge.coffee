@@ -42,12 +42,12 @@ class Challenge
 
   start: ->
     @http_server = http.createServer (request, response) ->
-      console.log "#{new Date()} Received request for #{request.url}"
+      console.log "#{new Date} Received request for #{request.url}"
       response.writeHead 404
       do response.end
 
     @http_server.listen 8080, ->
-      console.log "#{new Date()} HTTP server is listening on port 8080"
+      console.log "#{new Date} HTTP server is listening on port 8080"
 
     @websocket_server = new WebSocketServer
       httpServer: @http_server
@@ -70,7 +70,7 @@ class Challenge
 
         'task_one': (message) =>
           participant = @get_participant message.auth_token
-          task = participant.assign_task 'task_one', new ArithmeticTask()
+          task = participant.assign_task 'task_one', new ArithmeticTask
           do task.messagify
 
         'task_one_result': (message) =>
@@ -83,7 +83,7 @@ class Challenge
 
         'next': (message) =>
           participant = @get_participant message.auth_token
-          task = participant.assign_task 'task_two', new BinaryTask()
+          task = participant.assign_task 'task_two', new BinaryTask
           do task.messagify
 
         'task_two_result': (message) =>
