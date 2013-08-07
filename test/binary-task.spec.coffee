@@ -58,7 +58,7 @@ describe 'BinaryTask', ->
 		it 'returns an array with two elements where first element is an object with msg and bit keys, where msg key is equal to \'binary_sum\'', ->
 			binary_task.messagify()[0].msg.should.equal 'binary_sum'
 
-		it 'returns an array with two elements where first element is an object with msg and bit keys, where msg key is equal to \'binary_sum\'', ->
+		it 'returns an array with two elements where first element is an object with msg and bit keys, where bits key is equal to the tasks\'s `bits` field', ->
 			bits = binary_task.bits
 			binary_task.messagify()[0].bits.should.equal bits
 
