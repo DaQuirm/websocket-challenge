@@ -1,4 +1,4 @@
 Challenge = require './challenge.coffee'
 
-challenge = new Challenge()
+challenge = new Challenge
 do challenge.start
