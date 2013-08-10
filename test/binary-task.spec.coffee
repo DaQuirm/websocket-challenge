@@ -3,11 +3,11 @@ Chai.should()
 
 BinaryTask = require '../src/binary-task.coffee'
 
-describe 'Binary Task', ->
+describe 'BinaryTask', ->
 	binary_task = null
 	beforeEach ->
 		binary_task = new BinaryTask
-	
+
 	describe 'bit', ->
 		it 'exists', ->
 			binary_task.should.have.ownProperty 'bits'
@@ -57,16 +57,11 @@ describe 'Binary Task', ->
 
 		it 'returns an array with two elements where first element is an object with msg and bit keys, where msg key is equal to \'binary_sum\'', ->
 			binary_task.messagify()[0].msg.should.equal 'binary_sum'
+
 		it 'returns an array with two elements where first element is an object with msg and bit keys, where bits key is equal to the tasks\'s `bits` field', ->
-			bits = binary_task.bits
-			binary_task.messagify()[0].bits.should.equal bit
-		it 'returns an array where second element is ArrayBuffer object equal buffer', ->
-			buffer = binary_task.buffer
 			bits = binary_task.bits
 			binary_task.messagify()[0].bits.should.equal bits
 
-		
 		it 'returns an array where second element is ArrayBuffer object equal buffer', ->
 			buffer = binary_task.buffer
-			binary_task.messagify()[1].should.equal bu
-ffer
+			binary_task.messagify()[1].should.equal buffer

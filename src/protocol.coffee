@@ -5,7 +5,9 @@ class Protocol
 
   process: (message) ->
     try
+      console.log JSON.stringify message
       @json = JSON.parse message.utf8Data
+      console.log JSON.stringify @json
     catch ex
       throw new Error 'Invalid JSON :('
 
