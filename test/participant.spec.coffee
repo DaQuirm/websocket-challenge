@@ -51,11 +51,11 @@ describe 'Participant', ->
 			participant.assign_task.should.be.a 'function'
 		it 'returns an object', ->
 			participant.assign_task({},{}).should.be.an 'object'
-		it 'assign a task', ->
+		it 'assign a task to the participant and returns tasks', ->
 			task_name = 'task_name'
 			task_data = name: 'task_data'
 			participant.assign_task(task_name, task_data).should.equal task_data
-		it 'stores tasks', ->
+		it 'makes it possible to assign more than one task to the participant', ->
 			first_task_name = 'first_task_name'
 			first_task_data = name: 'first_task_data'	
 			second_task_name = 'second_task_name'
