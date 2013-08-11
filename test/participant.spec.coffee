@@ -70,7 +70,7 @@ describe 'Participant', ->
 	describe 'check_task', ->
 		it 'exists', ->
 			participant.check_task.should.be.a 'function'
-		it 'throw error exception when task in not assing', ->
+		it 'throws an error exception when task is not assing to the participant', ->
 			-> participant.check_task().should.throw Error
 		it 'returns a boolean', ->
 			first_task_name = 'first_task_name'
