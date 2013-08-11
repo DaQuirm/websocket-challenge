@@ -7,7 +7,7 @@ describe 'Protocol', ->
 	actions = null
 	protocol = null
 	beforeEach ->
-		protocol = new Protocol(actions)
+		protocol = new Protocol actions
 
 	describe 'has_result', ->
 		it 'exists', ->
@@ -17,12 +17,10 @@ describe 'Protocol', ->
 			utf8Data = 
 				msg: 'task'
 				result: true
-			message =
-				utf8Data: JSON.stringify utf8Data
-			actions = 
-				task: () -> true
-			protocol = new Protocol(actions)
-			protocol.process(message)
+			message = utf8Data: JSON.stringify utf8Data
+			actions = task: -> true
+			protocol = new Protocol actions
+			protocol.process message
 			protocol.has_result().should.be.ok
 	
 	describe 'is_secure', ->
@@ -33,12 +31,10 @@ describe 'Protocol', ->
 			utf8Data = 
 				msg: 'task'
 				auth_token: true
-			message =
-				utf8Data: JSON.stringify utf8Data
-			actions = 
-				task: () -> true
-			protocol = new Protocol(actions)
-			protocol.process(message)
+			message = utf8Data: JSON.stringify utf8Data
+			actions = task: -> true
+			protocol = new Protocol actions
+			protocol.process message
 			protocol.is_secure().should.be.ok
 
 	describe 'create_error_msg', ->
@@ -64,29 +60,20 @@ describe 'Protocol', ->
 			-> protocol.process(message).show.throw '`Invalid JSON :('
 
 		it 'parses JSON from message.utf8data', ->
-			utf8Data = 
-				msg: 'task'
-			message =
-				utf8Data: JSON.stringify utf8Data
-			actions = 
-				task: () -> true
-			protocol = new Protocol(actions)
+			utf8Data = msg: 'task'
+			message = utf8Data: JSON.stringify utf8Data
+			actions = task: -> true
+			protocol = new Protocol actions
 			protocol.process(message).should.be.ok
 
 		it 'throws exception `Message can\'t be sent without an auth token if message should contains `auth_token`', ->
-			protocol.secure_messages = 
-				task: true
-			utf8Data = 
-				msg: 'task'
-			message =
-				utf8Data: JSON.stringify utf8Data
+			protocol.secure_messages = task: true
+			utf8Data = msg: 'task'
+			message = utf8Data: JSON.stringify utf8Data
 			-> protocol.process(message).should.throw 'Message `#{@utf8Data.msg}` can\'t be sent without an auth token'
 
 		it 'throws exception `Message must have a `result` field` if message should contains `result` field', ->
-			protocol.result_messages = 
-				task: true
-			utf8Data = 
-				msg: 'task'
-			message =
-				utf8Data: JSON.stringify utf8Data
+			protocol.result_messages = task: true
+			utf8Data = msg: 'task'
+			message = utf8Data: JSON.stringify utf8Data
 			-> protocol.process(message).should.throw 'Message `#{@utf8Data.msg}` must have a `result` field'
