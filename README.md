@@ -1,3 +1,5 @@
+[![Dependency Status](https://gemnasium.com/DaQuirm/websocket-challenge.png)](https://gemnasium.com/DaQuirm/websocket-challenge)
+
 # Websocket Challenge
 
 A simple WebSocket competition script for Node.js that
