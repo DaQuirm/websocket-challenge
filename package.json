@@ -5,20 +5,20 @@
   "main": "./src/service.coffee",
   "scripts": {
     "start": "coffee ./src/service.coffee",
-    "test": "mocha --compilers coffee:coffee-script -R spec"
+    "test": "mocha --compilers coffee:coffee-script/register -R spec"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/DaQuirm/websocket-challenge.git"
   },
-  "contributors": [ 
+  "contributors": [
     {
       "name": "Vasiliy Ermolovich",
       "email": "younash@gmail.com"
     },
     {
       "name": "Dzmitry Varabei"
-    }  
+    }
   ],
   "keywords": [
     "challenge",
