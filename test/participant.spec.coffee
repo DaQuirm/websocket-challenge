@@ -90,10 +90,10 @@ describe 'Participant', ->
 			participant.check_task(first_task_name).should.be.ok
 
 	describe 'update_state', ->
-		it 'throw an error exception when argument is not a string', ->
+		it 'throws an error exception when argument is not a string', ->
 			-> participant.update_state(state:'new').should.throw Error
 			-> participant.update_state().should.throw Error
-		it 'update current participant`s state', ->
+		it 'updates current participant`s state', ->
 			state = 'new'
 			participant.update_state(state)
 			participant.state.should.be.equal state
