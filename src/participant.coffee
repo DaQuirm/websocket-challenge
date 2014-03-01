@@ -21,7 +21,7 @@ class Participant
 
 	update_state: (state) ->
 		throw new Error 'Participant\'s state can\'t be empty' unless state
-		throw new Error 'Participant\'s state must be a string' unless typeof state == 'string'
+		throw new Error 'Participant\'s state must be a string' unless typeof state is 'string'
 		@state = state
 
 module.exports = Participant
