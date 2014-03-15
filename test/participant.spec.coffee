@@ -91,8 +91,8 @@ describe 'Participant', ->
 
 	describe 'update_state', ->
 		it 'throws an error exception when argument is not a string', ->
-			-> participant.update_state(state:'new').should.throw Error
-			-> participant.update_state().should.throw Error
+ 			(-> participant.update_state state:'new').should.throw Error
+ 			(-> do participant.update_state).should.throw Error
 		it 'updates current participant`s state', ->
 			state = 'new'
 			participant.update_state(state)
